@@ -47,8 +47,6 @@ This is a sample error.
 \`\`\``,
         );
 
-        util.mysql.connect();
-
         // event section: handles registering all events
         const eventFiles = await fs.readdirSync(`${__dirname}/events`);
 
@@ -83,5 +81,8 @@ This is a sample error.
             presenceNumber++;
             if (presenceNumber >= config.presences.length) presenceNumber = 0;
         }, 120000);
+
+        // mysql connection
+        util.mysql.connect();
     };
 };
