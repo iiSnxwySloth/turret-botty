@@ -119,9 +119,9 @@ export default async (util: util, msg: Eris.Message) => {
             });
             util.errors.set(
                 id,
-                `***turret. bot error***\n> id: ${id}\nuser: <@${
+                `***turret. bot error***\n> id: ${id}\nuser: <@${user.id}> (${
                     user.id
-                }> (${user.id})\ndate: ${new Date()}\nmessage content: \`${
+                })\ndate: ${new Date()}\nmessage content: \`${
                     msg.content
                 }\`\nerror: \n\`\`\`\n${err.stack}\n\`\`\``,
             );

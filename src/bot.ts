@@ -4,8 +4,8 @@ import * as fs from "fs";
 import * as resources from "./resources";
 import * as config from "./config/config";
 import Collection from "@discordjs/collection";
-import * as mysql from 'mysql';
-import * as auth from './config/auth'
+import * as mysql from "mysql";
+import * as auth from "./config/auth";
 
 module.exports = class turretBot extends Base {
     constructor(bot: any) {
@@ -29,8 +29,8 @@ module.exports = class turretBot extends Base {
                 host: auth.database.host,
                 user: auth.database.user,
                 password: auth.database.password,
-                database: auth.database.schema
-            })
+                database: auth.database.schema,
+            }),
         };
 
         // set sample error

@@ -6,20 +6,25 @@ export default class TBotUser extends Eris.User {
     private util: util;
 
     constructor(user: Eris.User, util: util) {
-        super({id: user.id}, util.client);
+        super({ id: user.id }, util.client);
 
         this.util = util;
 
-        util.mysql.query(`INSERT IGNORE INTO economy (userid, balance) VALUES (${this.id}, 0);`)
+        util.mysql.query(
+            `INSERT IGNORE INTO economy (userid, balance) VALUES (${this.id}, 0);`,
+        );
     }
 
     get balance(): Promise<number> {
         return new Promise((res, rej) => {
-            this.util.mysql.query(`SELECT balance FROM economy WHERE userid = ${this.id};`,(error, results, fields) => {
-                if(error) rej(error);
-                res(Math.floor(results[0].balance))
-            })
-        })
+            this.util.mysql.query(
+                `SELECT balance FROM economy WHERE userid = ${this.id};`,
+                (error, results, fields) => {
+                    if (error) rej(error);
+                    res(Math.floor(results[0].balance));
+                },
+            );
+        });
     }
 
     get support(): boolean {
