@@ -47,6 +47,8 @@ This is a sample error.
 \`\`\``,
         );
 
+        util.mysql.connect();
+
         // event section: handles registering all events
         const eventFiles = await fs.readdirSync(`${__dirname}/events`);
 

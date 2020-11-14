@@ -9,10 +9,15 @@ export default class TBotUser extends Eris.User {
         super({id: user.id}, util.client);
 
         this.util = util;
+
+        util.mysql.query(`INSERT IGNORE INTO economy (userid, balance) VALUES (${this.id}, 0);`)
     }
 
     get balance(): number {
-        // returns the balance of the user
+        this.util.mysql.query(`SELECT balance FROM economy WHERE userid = ${this.id};`,(error, results, fields) => {
+            if (error) throw error;
+            return results[0].balance
+        })
         return 0;
     }
 
