@@ -18,11 +18,6 @@ export default class TBotUser extends Eris.User {
 
     get support(): boolean {
         // returns if the user is apart of turret bot support
-        return false || this.supervisor || this.dev;
-    }
-
-    get supervisor(): boolean {
-        // returns if the user is a supervisor of turret bot support
         return false || this.dev;
     }
 

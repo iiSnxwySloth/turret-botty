@@ -1,5 +1,5 @@
 export interface settings {
-    permission: "Public" | "Support" | "Supervisor" | "Developer";
+    permission: "Public" | "Support" | "Developer";
     requiresAuth: boolean;
 }
 

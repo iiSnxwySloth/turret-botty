@@ -54,8 +54,6 @@ export default async (util: util, msg: Eris.Message) => {
                 blacklisted === false &&
                 ((cmdData.settings.permission === "Support" &&
                     user.support === true) ||
-                    (cmdData.settings.permission === "Supervisor" &&
-                        user.supervisor === true) ||
                     (cmdData.settings.permission === "Developer" &&
                         user.dev === true) ||
                     cmdData.settings.permission === "Public")
