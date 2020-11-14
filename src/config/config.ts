@@ -39,6 +39,9 @@ aliases.set("smart", "iq");
 aliases.set("gaymeter", "gay");
 aliases.set("gaypercent", "gay");
 
+aliases.set("money", "balance");
+aliases.set("bal", "balance");
+
 // colors :)
 export const colors = {
     success: 0x41d171,
