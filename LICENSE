@@ -1,0 +1,29 @@
+The turret. botty License
+
+Copyright (c) 2020 turret.
+
+Permission is hereby granted, by turret (the "Sole Owner"), free of charge, to any person obtaining a
+copy of turret. botty (the "Bot"), to copy, modify, publish, use and to suggest
+changes to the official repository on Github (the "Repo"), as long
+as the person stays within the following conditions:
+
+    1. The person is not allowed to "self-host," or host an instance
+        of the Bot them self.
+    2. The person does not redistribute nor sell any copies of the bot
+        using their own Repo.
+    3. The person must provide credit to the Sole Owner and provide
+        a link to the Repo in copied code used in their project(s).
+
+Any of the conditions above may be voided for any purposes deemed
+acceptable by the Sole Owner, and proof must be able to be shown
+if the Sole Owner requests.
+
+The above copyright notice and this permission notice shall be included in all
+copies or repositories of the software.
+
+THE BOT IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
+CONNECTION WITH THE SOFTWARE OR THE USE OF OTHER DEALINGS IN THE SOFTWARE.

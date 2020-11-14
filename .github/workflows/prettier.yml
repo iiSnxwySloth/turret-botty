@@ -1,0 +1,26 @@
+name: formatting
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        # Make sure the actual branch is checked out when running on pull requests
+        ref: ${{ github.head_ref }}
+    
+    - name: Prettier Action
+      # You may pin to the exact commit or the version.
+       # uses: creyD/prettier_action@394fa2de3b2acce9f63808b958c54aa823a43b71
+      uses: creyD/prettier_action@v3.1
+      with:
+        # Update the current commit instead of creating a new one
+        same_commit: true # optional
+        # Options for the `prettier` command
+        prettier_options: "--write **/**/*.ts" # optional, default is --write **/*.js
