@@ -2,13 +2,13 @@ import Eris from "eris";
 import * as config from "../config/config";
 import util from "../types/util";
 
-export default class TBotUser {
-    public user: Eris.User;
+export default class TBotUser extends Eris.User {
     private util: util;
 
     constructor(user: Eris.User, util: util) {
+        super({id: user.id}, util.client);
+
         this.util = util;
-        this.user = user;
     }
 
     get balance(): number {
@@ -29,7 +29,7 @@ export default class TBotUser {
     get dev(): boolean {
         // returns if the user is a developer
         let dev = false;
-        if (config.owners.get(this.user.id) === true) dev = true;
+        if (config.owners.get(this.id) === true) dev = true;
         return dev;
     }
 

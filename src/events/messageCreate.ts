@@ -83,9 +83,9 @@ export default async (util: util, msg: Eris.Message) => {
                         util.errors.set(
                             id,
                             `***turret. bot error***\n> id: ${id}\nuser: <@${
-                                user.user.id
+                                user.id
                             }> (${
-                                user.user.id
+                                user.id
                             })\ndate: ${new Date()}\nmessage content: \`${
                                 msg.content
                             }\`\nerror: \n\`\`\`\n${err.stack}\n\`\`\``,
@@ -122,8 +122,8 @@ export default async (util: util, msg: Eris.Message) => {
             util.errors.set(
                 id,
                 `***turret. bot error***\n> id: ${id}\nuser: <@${
-                    user.user.id
-                }> (${user.user.id})\ndate: ${new Date()}\nmessage content: \`${
+                    user.id
+                }> (${user.id})\ndate: ${new Date()}\nmessage content: \`${
                     msg.content
                 }\`\nerror: \n\`\`\`\n${err.stack}\n\`\`\``,
             );
