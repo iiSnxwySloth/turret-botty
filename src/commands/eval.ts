@@ -48,11 +48,12 @@ export const execute = async (
         hrstart = process.hrtime();
         result = await eval(asyncEval(code, code.includes("return")));
     } catch (err) {
-        if (err.stack.length <= 1980) {
+        err = err ? err : "an error occured, however no error was actually provided"
+        if (err.stack ? err.stack.length : err.length <= 1980) {
             return await util.client.createMessage(msg.channel.id, {
                 embed: {
                     color: config.colors.error,
-                    description: `\`\`\`\n${err.stack}\n\`\`\``,
+                    description: `\`\`\`\n${err.stack ? err.stack : err}\n\`\`\``,
                     footer: {
                         text: `Execution time: ${
                             process.hrtime(hrstart)[0]
