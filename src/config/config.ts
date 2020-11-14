@@ -15,6 +15,9 @@ export const prefix = ";";
 // version (major.minor.patch)
 export const version = "1.0.0";
 
+// currency
+export const currency = 'TBX'
+
 // owners
 export const owners: Collection<string, boolean> = new Collection();
 owners.set("314585094302203904", true); // turret, ofc
