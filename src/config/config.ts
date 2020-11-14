@@ -16,7 +16,7 @@ export const prefix = ";";
 export const version = "1.0.0";
 
 // currency
-export const currency = 'TBX'
+export const currency = "TBX";
 
 // owners
 export const owners: Collection<string, boolean> = new Collection();

@@ -28,13 +28,15 @@ export const execute = async (
         : args[0]
         ? args[0]
         : msg.author.id;
-    const basedata = await util.IPC.fetchUser(target)
+    const basedata = await util.IPC.fetchUser(target);
     const tbotuser = new TBotUser(basedata, util);
 
     util.client.createMessage(msg.channel.id, {
         embed: {
             title: `\`${tbotuser.username}\`'s Balance`,
-            description: `${tbotuser.username} has a balance of \`${await tbotuser.balance}\`${config.currency}`,
+            description: `${
+                tbotuser.username
+            } has a balance of \`${await tbotuser.balance}\`${config.currency}`,
             color: config.colors.info,
             timestamp: new Date(),
         },
