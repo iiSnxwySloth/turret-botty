@@ -24,3 +24,4 @@ jobs:
         same_commit: true # optional
         # Options for the `prettier` command
         prettier_options: "--write **/**/*.ts" # optional, default is --write **/*.js
+        dry: true
