@@ -5,8 +5,8 @@ import util from "../types/util";
 export default class TBotUser extends Eris.User {
     private util: util;
 
-    constructor(user: Eris.User, util: util) {
-        super({ id: user.id }, util.client);
+    constructor(user: Eris.BaseData | Eris.User, util: util) {
+        super(user as Eris.BaseData, util.client);
 
         this.util = util;
 
