@@ -13,9 +13,9 @@ import * as resources from "../resources";
 import tbotUserClass from "../classes/user";
 
 export default async (util: util, msg: Eris.Message) => {
-    if (msg.content.startsWith(config.prefix)) {
-        const user = new tbotUserClass(msg.author, util);
+    const user = new tbotUserClass(msg.author, util);
 
+    if (msg.content.startsWith(config.prefix)) {
         // gets actual command name
         const execCommand = msg.content
             .split(" ")[0]
