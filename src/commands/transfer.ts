@@ -85,7 +85,7 @@ export const execute = async (
             senderDMs.id,
             "❌ Come on, you can't give them nothing.",
         );
-    } else if ((await sender.balance) > amount) {
+    } else if ((await sender.balance) < Math.ceil(amount * 0.0625) + amount) {
         return util.client.createMessage(
             senderDMs.id,
             "❌ You gotta have the money to spend it.",
