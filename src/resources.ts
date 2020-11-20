@@ -195,7 +195,7 @@ export const createTransaction = async (
             await confirmationMessage.edit({
                 embed: {
                     title: "TURRET. BOT TRANSACTION CONFIRMATION",
-                    description: "Transaction approved, have a nice day!",
+                    description: `Transaction for transfer of \`${amount}\`${currency} to (${sender.username}#${sender.discriminator}) with the total amount spent being \`${total}\`${currency} approved, have a nice day!`,
                     color: colors.success,
                     fields: [],
                     timestamp: new Date(),
