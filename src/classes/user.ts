@@ -28,6 +28,9 @@ export default class TBotUser extends Eris.User {
     }
 
     public setbalance(bal: number) {
+        if(bal < 0){
+            throw "balance cannot be below 0";
+        }
         this.util.mysql.query(
             `UPDATE economy SET balance = ${bal.toString()} WHERE userid = ${this.id};`,
         );
