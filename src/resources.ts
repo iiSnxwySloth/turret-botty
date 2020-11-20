@@ -204,7 +204,7 @@ export const createTransaction = async (
             (await recipient.getDMChannel()).createMessage({
                 embed: {
                     title: "turret. bot transaction",
-                    description: `You have received a total of ${currency}\`${amount}\` from ${sender.mention} (${sender.username}#${sender.discriminator})\n\nMessage: \`${message}\``,
+                    description: `You have received a total of \`${amount}\`${currency} from ${sender.mention} (${sender.username}#${sender.discriminator})\n\nMessage: \`${message}\``,
                     color: colors.reciept,
                     timestamp: new Date(),
                 },
