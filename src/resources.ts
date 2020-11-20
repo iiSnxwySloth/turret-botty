@@ -192,7 +192,7 @@ export const createTransaction = async (
             senderTBOT.setbalance((await senderTBOT.balance) - total);
             recipientTBOT.setbalance((await recipientTBOT.balance) + amount);
 
-            confirmationMessage.edit({
+            await confirmationMessage.edit({
                 embed: {
                     title: "TURRET. BOT TRANSACTION CONFIRMATION",
                     description: "Transaction approved, have a nice day!",
@@ -201,7 +201,7 @@ export const createTransaction = async (
                     timestamp: new Date(),
                 },
             });
-            (await recipient.getDMChannel()).createMessage({
+            return await (await recipient.getDMChannel()).createMessage({
                 embed: {
                     title: "turret. bot transaction",
                     description: `You have received a total of \`${amount}\`${currency} from ${sender.mention} (${sender.username}#${sender.discriminator})\n\nMessage: \`${message}\``,
