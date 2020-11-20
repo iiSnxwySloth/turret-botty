@@ -1,4 +1,9 @@
 import clear from "clear-module";
+import Eris, { User } from "eris";
+import { config } from "process";
+import TBotUser from "./classes/user";
+import { colors, currency } from "./config/config";
+import util from "./types/util";
 
 export const isValidEvent = (event: string): boolean => {
     if (
@@ -83,3 +88,139 @@ export const reload = (path: string): any =>
             res(null);
         }
     });
+
+export const createTransaction = async (
+    sender: User,
+    recipient: User,
+    amount: number,
+    message: string | undefined,
+    util: util,
+) => {
+    const total = Math.ceil(amount * 0.0625) + amount;
+
+    const senderChannel = await sender.getDMChannel();
+
+    const confirmationMessage = await util.client.createMessage(
+        senderChannel.id,
+        {
+            embed: {
+                title: "TURRET. BOT TRANSACTION CONFIRMATION",
+                description:
+                    "Please verify the details below for your transaction. Transactions are not reversible without asking the recipient for the money back. Once you have added your reaction, please wait up for 60 seconds for the bot to approve the transaction.",
+                timestamp: new Date(),
+                color: colors.reciept,
+                fields: [
+                    {
+                        name: "Sender",
+                        value:
+                            sender.mention +
+                            " (" +
+                            sender.username +
+                            "#" +
+                            sender.discriminator +
+                            ")",
+                        inline: true,
+                    },
+                    {
+                        name: "Recipient",
+                        value:
+                            recipient.mention +
+                            " (" +
+                            recipient.username +
+                            "#" +
+                            recipient.discriminator +
+                            ")",
+                        inline: true,
+                    },
+                    {
+                        name: "Message",
+                        value: message ? message : "No message specified.",
+                    },
+                    {
+                        name: "Sub-Total",
+                        value: amount.toString(),
+                        inline: true,
+                    },
+                    {
+                        name: "Tax",
+                        value: Math.ceil(amount * 0.0625).toString(),
+                        inline: true,
+                    },
+                    {
+                        name: "Total",
+                        value: total.toString(),
+                        inline: true,
+                    },
+                ],
+            },
+        },
+    );
+
+    await confirmationMessage.addReaction("✅");
+    await confirmationMessage.addReaction("❎");
+
+    const timeout = setTimeout(async () => {
+        const confirmed =
+            (await confirmationMessage.getReaction("✅")).length > 1;
+        const cancelled =
+            (await confirmationMessage.getReaction("❎")).length > 1;
+
+        if (confirmed && cancelled) {
+            return confirmationMessage.edit({
+                embed: {
+                    title: "TURRET. BOT TRANSACTION CONFIRMATION",
+                    description: "Transaction cancelled, have a nice day!",
+                    color: colors.error,
+                    fields: [],
+                    timestamp: new Date(),
+                },
+            });
+        } else if (cancelled) {
+            return confirmationMessage.edit({
+                embed: {
+                    title: "TURRET. BOT TRANSACTION CONFIRMATION",
+                    description: "Transaction cancelled, have a nice day!",
+                    color: colors.error,
+                    fields: [],
+                    timestamp: new Date(),
+                },
+            });
+        } else if (confirmed) {
+            const senderTBOT = new TBotUser(sender, util);
+            const recipientTBOT = new TBotUser(recipient, util);
+
+            senderTBOT.setbalance((await senderTBOT.balance) - total);
+            recipientTBOT.setbalance((await recipientTBOT.balance) + amount);
+
+            confirmationMessage.edit({
+                embed: {
+                    title: "TURRET. BOT TRANSACTION CONFIRMATION",
+                    description: "Transaction approved, have a nice day!",
+                    color: colors.success,
+                    fields: [],
+                    timestamp: new Date(),
+                },
+            });
+            (await recipient.getDMChannel()).createMessage({
+                embed: {
+                    title: "turret. bot transaction",
+                    description: `You have received a total of ${currency}\`${amount}\` from ${sender.mention} (${sender.username}#${sender.discriminator})\n\nMessage: \`${message}\``,
+                    color: colors.reciept,
+                    timestamp: new Date(),
+                },
+            });
+        } else {
+            return confirmationMessage.edit({
+                embed: {
+                    title: "TURRET. BOT TRANSACTION CONFIRMATION",
+                    description: "Transaction cancelled, have a nice day!",
+                    color: colors.error,
+                    fields: [],
+                    timestamp: new Date(),
+                },
+            });
+        }
+
+        clearTimeout(timeout);
+    }, 60000);
+};
