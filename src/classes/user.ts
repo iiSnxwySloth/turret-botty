@@ -27,6 +27,12 @@ export default class TBotUser extends Eris.User {
         });
     }
 
+    set balance(bal) {
+        this.util.mysql.query(
+            `UPDATE economy SET balance WHERE userid = ${this.id};`,
+        );
+    }
+
     get support(): boolean {
         // returns if the user is apart of turret bot support
         return false || this.dev;
