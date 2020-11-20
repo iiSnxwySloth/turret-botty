@@ -47,6 +47,7 @@ export const colors = {
     success: 0x41d171,
     info: 0x4197d1,
     error: 0xe6496b,
+    reciept: 0xe0e0e0,
 };
 
 // user statuses for the bot to rotate through (suggestions are welcomed)
