@@ -189,8 +189,8 @@ export const createTransaction = async (
             const senderTBOT = new TBotUser(sender, util);
             const recipientTBOT = new TBotUser(recipient, util);
 
-            senderTBOT.setbalance((await senderTBOT.balance) - total);
-            recipientTBOT.setbalance((await recipientTBOT.balance) + amount);
+            await senderTBOT.setbalance((await senderTBOT.balance) - total);
+            await recipientTBOT.setbalance((await recipientTBOT.balance) + amount);
 
             await confirmationMessage.edit({
                 embed: {
