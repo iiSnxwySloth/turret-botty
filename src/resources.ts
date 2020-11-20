@@ -166,7 +166,7 @@ export const createTransaction = async (
             (await confirmationMessage.getReaction("❎")).length > 1;
 
         if (confirmed && cancelled) {
-            return confirmationMessage.edit({
+            return await confirmationMessage.edit({
                 embed: {
                     title: "TURRET. BOT TRANSACTION CONFIRMATION",
                     description: "Transaction cancelled, have a nice day!",
@@ -176,7 +176,7 @@ export const createTransaction = async (
                 },
             });
         } else if (cancelled) {
-            return confirmationMessage.edit({
+            return await confirmationMessage.edit({
                 embed: {
                     title: "TURRET. BOT TRANSACTION CONFIRMATION",
                     description: "Transaction cancelled, have a nice day!",
@@ -210,7 +210,7 @@ export const createTransaction = async (
                 },
             });
         } else {
-            return confirmationMessage.edit({
+            return await confirmationMessage.edit({
                 embed: {
                     title: "TURRET. BOT TRANSACTION CONFIRMATION",
                     description: "Transaction cancelled, have a nice day!",
