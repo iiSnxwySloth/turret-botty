@@ -29,7 +29,7 @@ export default class TBotUser extends Eris.User {
 
     public setbalance(bal: number) {
         this.util.mysql.query(
-            `UPDATE economy SET balance WHERE userid = ${this.id};`,
+            `UPDATE economy SET balance = ${bal.toString()} WHERE userid = ${this.id};`,
         );
     }
 
