@@ -52,7 +52,7 @@ export default class TBotUser extends Eris.User {
 
     get blacklisted(): Promise<boolean> {
         // returns if the user is blacklisted
-        return new Promise((rej, res) => {
+        return new Promise((res, rej) => {
             this.util.mysql.query(
                 `SELECT id FROM punishment WHERE userid = ${this.id} && type = 1;`,
                 (err, result) => {
