@@ -6,6 +6,7 @@ import * as config from "./config/config";
 import Collection from "@discordjs/collection";
 import * as mysql from "mysql";
 import * as auth from "./config/auth";
+import { scheduleJob } from "node-schedule";
 
 module.exports = class turretBot extends Base {
     constructor(bot: any) {
@@ -64,6 +65,12 @@ This is a sample error.
                     });
                 }
             }
+        });
+
+        // jobs
+        scheduleJob("0 0 * * *", () => {
+            // reset dailies
+            util.mysql.query("UPDATE economy SET dailycooldown = 0;");
         });
 
         // presence section: handles rotating the status of the bot
