@@ -48,15 +48,15 @@ export default async (util: util, msg: Eris.Message) => {
             // dev only mode setting
             if (config.devOnlyMode) cmdData.settings.permission = "Developer";
 
-            const blacklisted = user.blacklisted;
+            const blacklisted = await user.blacklisted;
+            if (blacklisted === true) return;
 
             if (
-                blacklisted === false &&
-                ((cmdData.settings.permission === "Support" &&
+                (cmdData.settings.permission === "Support" &&
                     user.support === true) ||
-                    (cmdData.settings.permission === "Developer" &&
-                        user.dev === true) ||
-                    cmdData.settings.permission === "Public")
+                (cmdData.settings.permission === "Developer" &&
+                    user.dev === true) ||
+                cmdData.settings.permission === "Public"
             ) {
                 // execute command
                 cmdData
@@ -93,9 +93,8 @@ export default async (util: util, msg: Eris.Message) => {
                 util.client.createMessage(msg.channel.id, {
                     embed: {
                         title: "Invalid Permissions",
-                        description: blacklisted
-                            ? "You are blacklisted from using the bot."
-                            : "You do not have valid permissions to use this command.",
+                        description:
+                            "You do not have valid permissions to use this command.",
                         color: config.colors.error,
                     },
                 });
