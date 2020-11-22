@@ -190,12 +190,14 @@ export const createTransaction = async (
             const recipientTBOT = new TBotUser(recipient, util);
 
             await senderTBOT.setbalance((await senderTBOT.balance) - total);
-            await recipientTBOT.setbalance((await recipientTBOT.balance) + amount);
+            await recipientTBOT.setbalance(
+                (await recipientTBOT.balance) + amount,
+            );
 
             await confirmationMessage.edit({
                 embed: {
                     title: "TURRET. BOT TRANSACTION CONFIRMATION",
-                    description: `Transaction for transfer of \`${amount}\`${currency} to (${sender.username}#${sender.discriminator}) with the total amount spent being \`${total}\`${currency} approved, have a nice day!`,
+                    description: `Transaction for transfer of \`${amount}\`${currency} to (${recipient.username}#${recipient.discriminator}) with the total amount spent being \`${total}\`${currency} approved, have a nice day!`,
                     color: colors.success,
                     fields: [],
                     timestamp: new Date(),
