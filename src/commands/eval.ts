@@ -42,7 +42,7 @@ export const execute = async (
     let result = "";
     try {
         const asyncEval = (code: string, returns: boolean) =>
-            `(async () => {\n"use strict";\n${
+            `(async () => {${
                 !returns ? `return ${code.trim()}` : `${code.trim()}`
             }})()`;
         hrstart = process.hrtime();
@@ -84,6 +84,10 @@ export const execute = async (
         "TOKEN",
     );
     result = result.replace(auth.discord.token, "TOKEN");
+
+    result = result.replace(auth.database.host, "DBHOST");
+    result = result.replace(auth.database.password, "DBPW");
+
     if (result.length <= 1980) {
         return util.client.createMessage(msg.channel.id, {
             embed: {
