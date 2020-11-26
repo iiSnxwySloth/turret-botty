@@ -56,7 +56,7 @@ export default class TBotUser extends Eris.User {
             this.util.mysql.query(
                 `SELECT id FROM punishment WHERE userid = ${this.id} && type = 1;`,
                 (err, result) => {
-                    if (result.length >= 1) {
+                    if (typeof result !== "undefined" && result.length >= 1) {
                         res(true);
                     } else {
                         res(false);
