@@ -7,14 +7,14 @@ import util from "../types/util";
 export const name = "blacklist";
 
 export const settings: commandTypes.settings = {
-    permission: "Public",
+    permission: "Support",
     requiresAuth: false,
 };
 
 export const help: commandTypes.help = {
-    usage: "",
-    category: "Miscellaneous",
-    desc: "View the ping of the bot",
+    usage: "(user) [reason]",
+    category: "Developer",
+    desc: "blacklist a user",
 };
 
 export const execute = async (
