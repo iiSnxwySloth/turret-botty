@@ -71,6 +71,8 @@ export const execute = async (
                 description: `${target.mention} (${target.username}#${target.discriminator}) has been removed from the blacklist!`
             }
         })
+
+        util.client.createMessage("762136407716003880","`["+(new Date().toUTCString())+`]\` 🔧 User ${target.id} has been removed from the blacklist by ${msg.author.id}`)
         
         util.client.createMessage((await target.getDMChannel()).id, {
             embed: {
@@ -91,6 +93,8 @@ export const execute = async (
                 description: `${target.mention} (${target.username}#${target.discriminator}) has been added to the blacklist.\nPunishment ID \`${id}\``
             }
         })
+
+        util.client.createMessage("762136407716003880","`["+(new Date().toUTCString())+`]\` 🔨 User ${target.id} has been added to the blacklist by ${msg.author.id} \`${id}\``)
         
         util.client.createMessage((await target.getDMChannel()).id, {
             embed: {
