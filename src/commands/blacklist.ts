@@ -51,6 +51,14 @@ export const execute = async (
         util,
     );
 
+    if(target.dev) return util.client.createMessage(msg.channel.id, {
+        embed: {
+            color: config.colors.error,
+            title: "turret. bot Blacklist",
+            description: "You can't do that! Why would I even let you do that?",
+        },
+    });
+
     if (typeof target === "undefined") {
         return util.client.createMessage(msg.channel.id, {
             embed: {
