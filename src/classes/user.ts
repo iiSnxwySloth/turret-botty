@@ -21,6 +21,7 @@ export default class TBotUser extends Eris.User {
                 `SELECT balance FROM economy WHERE userid = ${this.id};`,
                 (error, results, fields) => {
                     if (error) rej(error);
+                    if (!results) return;
                     res(Math.floor(results[0].balance));
                 },
             );
