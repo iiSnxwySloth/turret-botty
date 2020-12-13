@@ -1,4 +1,3 @@
-import Collection from "@discordjs/collection";
 import Eris from "eris";
 import * as mysql from "mysql";
 
@@ -13,7 +12,7 @@ export default interface util {
         fetchGuild(id: string): Promise<Eris.BaseData>;
         fetchChannel(id: string): Promise<Eris.BaseData>;
     };
-    errors: Collection<string, string>;
+    errors: Map<string, string>;
     mysql: mysql.Connection;
     log: (msg: string) => void;
 }

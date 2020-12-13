@@ -3,7 +3,6 @@ import util from "./types/util";
 import * as fs from "fs";
 import * as resources from "./resources";
 import * as config from "./config/config";
-import Collection from "@discordjs/collection";
 import * as mysql from "mysql";
 import * as auth from "./config/auth";
 import { scheduleJob } from "node-schedule";
@@ -25,7 +24,7 @@ module.exports = class turretBot extends Base {
         const util: util = {
             client: this.bot,
             IPC: this.ipc,
-            errors: new Collection(),
+            errors: new Map(),
             mysql: mysql.createConnection({
                 host: auth.database.host,
                 user: auth.database.user,
