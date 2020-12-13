@@ -148,7 +148,7 @@ export default class help extends Command {
             const cmdData = util.cmds.get(
                 actualCommandName as string,
             ) as Command;
-            if (!(cmdData instanceof Command))
+            if (typeof cmdData === "undefined")
                 return util.client.createMessage(msg.channel.id, {
                     embed: {
                         title: "Oops!",
