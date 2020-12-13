@@ -1,5 +1,4 @@
 import Eris from "eris";
-import Collection from "@discordjs/collection";
 
 type erisPresence = {
     status?: Eris.Status;
@@ -19,13 +18,13 @@ export const version = "1.0.0";
 export const currency = "TBX";
 
 // owners
-export const owners: Collection<string, boolean> = new Collection();
+export const owners: Map<string, boolean> = new Map();
 owners.set("314585094302203904", true); // turret, ofc
 owners.set("242876771387572224", true); // snowy, the sex god
 
 // aliases (since im not going to go through every file to check if the command is an alias when
 // 				a command is executed)
-export const aliases: Collection<string, string> = new Collection();
+export const aliases: Map<string, string> = new Map();
 aliases.set("pong", "ping");
 aliases.set("halp", "help");
 

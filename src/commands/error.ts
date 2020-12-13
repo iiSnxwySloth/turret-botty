@@ -1,30 +1,28 @@
 import * as Eris from "eris";
-import * as config from "../config/config";
-import * as commandTypes from "../types/commands";
+import Command from "../classes/abstract/command";
 import util from "../types/util";
 
-export const name = "error";
+export default class error extends Command {
+    public execute = async (
+        util: util,
+        command: string,
+        args: string[],
+        msg: Eris.Message,
+    ) => {
+        const error = util.errors.get(args[0]);
+        await util.client.createMessage(
+            msg.channel.id,
+            error ? error : "Invalid error ID",
+        );
+    };
 
-export const settings: commandTypes.settings = {
-    permission: "Support",
-    requiresAuth: false,
-};
-
-export const help: commandTypes.help = {
-    usage: "(error id)",
-    category: "Support",
-    desc: "View the information on a turret. bot error",
-};
-
-export const execute = async (
-    util: util,
-    command: string,
-    args: string[],
-    msg: Eris.Message,
-) => {
-    const error = util.errors.get(args[0]);
-    await util.client.createMessage(
-        msg.channel.id,
-        error ? error : "Invalid error ID",
-    );
-};
+    constructor() {
+        super(
+            "error",
+            "Support",
+            "Support",
+            "(error)",
+            "View the information on a turret. bot error",
+        );
+    }
+}
