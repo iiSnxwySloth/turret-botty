@@ -31,6 +31,7 @@ module.exports = class turretBot extends Base {
                 password: auth.database.password,
                 database: auth.database.schema,
             }),
+            cmds: new Map(),
             log: (msg: string) => {
                 util.client.createMessage(
                     "762136407716003880",
@@ -52,6 +53,28 @@ error:
 This is a sample error.
 \`\`\``,
         );
+
+        // register all commands
+        const cmdFiles = await fs.readdirSync(`${__dirname}/commands`);
+
+        cmdFiles.forEach(async (name) => {
+            if (name.endsWith(".js")) {
+                const cmd = name.replace(".js", "");
+                const cmdFile = await resources.reload(
+                    `${__dirname}/commands/${name}`,
+                );
+
+                try{
+                    if (cmdFile !== null)
+                        if (cmdFile.default !== null) {
+                            const cmdClass = new cmdFile.default();
+                            util.cmds.set(cmd, cmdClass);
+                        }
+                }catch(err){
+                    console.warn(`Failed to register command file ${name}`)
+                }
+            }
+        });
 
         // event section: handles registering all events
         const eventFiles = await fs.readdirSync(`${__dirname}/events`);

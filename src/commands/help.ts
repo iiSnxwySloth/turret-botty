@@ -16,21 +16,14 @@ export default class help extends Command {
         if (typeof args[0] === "undefined") {
             const cmds = [];
 
-            const cmdFiles = fs.readdirSync(__dirname);
-            for (const cmdFile of cmdFiles) {
-                if (cmdFile.endsWith(".js")) {
-                    cmds.push(cmdFile.substr(0, cmdFile.length - 3));
-                }
-            }
-
             const ecoCmds: string[] = [];
             const supCmds: string[] = [];
             const devCmds: string[] = [];
             const funCmds: string[] = [];
             const mscCmds: string[] = [];
 
-            for (const cmd of cmds) {
-                const cmdMeta = require(`${__dirname}/${cmd}.js`) as Command;
+            for (const cmd of util.cmds.keys()) {
+                const cmdMeta = util.cmds.get(cmd) as Command;
                 const category = cmdMeta.category;
                 const array =
                     category === "Economy"
@@ -152,9 +145,9 @@ export default class help extends Command {
             const actualCommandName = config.aliases.has(args[0])
                 ? config.aliases.get(args[0])
                 : args[0];
-            const cmdData = await reload(
-                `${__dirname}/${actualCommandName}.js`,
-            );
+            const cmdData = util.cmds.get(
+                actualCommandName as string,
+            ) as Command;
             if (!(cmdData instanceof Command))
                 return util.client.createMessage(msg.channel.id, {
                     embed: {

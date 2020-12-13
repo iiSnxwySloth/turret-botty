@@ -31,13 +31,13 @@ export default async (util: util, msg: Eris.Message) => {
         try {
             // try catch to prevent errors on command
             // gets information on the command
-            const cmdReq = (await resources.reload(
+            const cmdReq = await resources.reload(
                 `${__dirname}/../commands/${command}.js`,
-            ));
+            );
 
             // ensures the command is valid
             if (cmdReq === null) return;
-            if(cmdReq.default === null) return;
+            if (cmdReq.default === null) return;
             const cmd = new cmdReq.default();
 
             const blacklisted = await user.blacklisted;

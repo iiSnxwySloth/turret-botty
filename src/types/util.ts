@@ -1,5 +1,6 @@
 import Eris from "eris";
 import * as mysql from "mysql";
+import Command from "../classes/abstract/command";
 
 export default interface util {
     client: Eris.Client;
@@ -15,4 +16,5 @@ export default interface util {
     errors: Map<string, string>;
     mysql: mysql.Connection;
     log: (msg: string) => void;
+    cmds: Map<string, Command>;
 }
