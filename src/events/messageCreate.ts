@@ -31,23 +31,14 @@ export default async (util: util, msg: Eris.Message) => {
         try {
             // try catch to prevent errors on command
             // gets information on the command
-            const cmd = await resources.reload(
+            const cmdReq = (await resources.reload(
                 `${__dirname}/../commands/${command}.js`,
-            );
+            ));
 
             // ensures the command is valid
-            if (!(cmd instanceof Command)) return;
-
-            // dev only mode setting
-            if (config.devOnlyMode && !user.dev)
-                return util.client.createMessage(msg.channel.id, {
-                    embed: {
-                        title: "Invalid Permissions",
-                        description:
-                            "You do not have valid permissions to use this command.",
-                        color: config.colors.error,
-                    },
-                });
+            if (cmdReq === null) return;
+            if(cmdReq.default === null) return;
+            const cmd = new cmdReq.default();
 
             const blacklisted = await user.blacklisted;
             if (blacklisted === true) return;
