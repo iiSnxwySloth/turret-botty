@@ -15,4 +15,5 @@ export default interface util {
     };
     errors: Collection<string, string>;
     mysql: mysql.Connection;
+    log: (msg: string) => void;
 }

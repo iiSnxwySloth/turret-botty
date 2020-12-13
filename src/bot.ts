@@ -32,6 +32,12 @@ module.exports = class turretBot extends Base {
                 password: auth.database.password,
                 database: auth.database.schema,
             }),
+            log: (msg: string) => {
+                util.client.createMessage(
+                    "762136407716003880",
+                    `\`[${new Date().toUTCString()}]\` ${msg}`,
+                );
+            },
         };
 
         // set sample error
