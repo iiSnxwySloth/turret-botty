@@ -61,7 +61,7 @@ export const execute = async (
         });
     }
 
-    if (target.dev)
+    if (target.support)
         return util.client.createMessage(msg.channel.id, {
             embed: {
                 color: config.colors.error,
