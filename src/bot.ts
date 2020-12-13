@@ -64,14 +64,14 @@ This is a sample error.
                     `${__dirname}/commands/${name}`,
                 );
 
-                try{
+                try {
                     if (cmdFile !== null)
                         if (cmdFile.default !== null) {
                             const cmdClass = new cmdFile.default();
                             util.cmds.set(cmd, cmdClass);
                         }
-                }catch(err){
-                    console.warn(`Failed to register command file ${name}`)
+                } catch (err) {
+                    console.warn(`Failed to register command file ${name}`);
                 }
             }
         });
