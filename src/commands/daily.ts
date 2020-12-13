@@ -30,13 +30,15 @@ export const execute = async (
             const updateBalance = res.changedRows === 1;
 
             if (updateBalance) {
-                user.setbalance((await user.balance) + 10);
-
+                user.setbalance((await user.balance) + 100);
+                util.log(
+                    `📆 ${user.username} (${user.id}) claimed their daily 100${config.currency}!`,
+                );
                 util.client.createMessage(msg.channel.id, {
                     embed: {
                         color: config.colors.success,
                         title: "turret. bot Daily " + config.currency,
-                        description: `${user.mention}, you have successfully redeemed your daily 10${config.currency}!`,
+                        description: `${user.mention}, you have successfully redeemed your daily 100${config.currency}!`,
                         timestamp: new Date(),
                     },
                 });
