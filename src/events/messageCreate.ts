@@ -28,92 +28,60 @@ export default async (util: util, msg: Eris.Message) => {
         // gets args to be passed onto command
         const args = msg.content.split(" ").splice(1);
 
-        try {
-            // try catch to prevent errors on command
-            // gets information on the command
-            const cmdReq = await resources.reload(
-                `${__dirname}/../commands/${command}.js`,
-            );
+        // gets information on the command
+        const cmdReq = await resources.reload(
+            `${__dirname}/../commands/${command}.js`,
+        );
 
-            // ensures the command is valid
-            if (cmdReq === null) return;
-            if (cmdReq.default === null) return;
-            const cmd = new cmdReq.default();
+        // ensures the command is valid
+        if (cmdReq === null) return;
+        if (cmdReq.default === null) return;
+        const cmd = new cmdReq.default();
 
-            const blacklisted = await user.blacklisted;
-            if (blacklisted === true) return;
+        const blacklisted = await user.blacklisted;
+        if (blacklisted === true) return;
 
-            if (
-                (cmd.permission === "Support" && user.support === true) ||
-                (cmd.permission === "Developer" && user.dev === true) ||
-                cmd.permission === "Public"
-            ) {
-                // execute command
-                cmd.execute(util, execCommand, args, msg).catch(
-                    (err: Error) => {
-                        // uh oh! there was an error! tell the user & tell turret
-                        const id =
-                            Math.random().toString(36).substring(2, 15) +
-                            Math.random().toString(36).substring(2, 15);
-                        util.client.createMessage(msg.channel.id, {
-                            embed: {
-                                title: "Uh oh!",
-                                description:
-                                    "There was an issue handeling your request. Please contact turret.",
-                                footer: {
-                                    text: `Error ID: ${id}`,
-                                },
-                                timestamp: new Date(),
-                                color: config.colors.error,
-                            },
-                        });
-                        util.errors.set(
-                            id,
-                            `***turret. bot error***\n> id: ${id}\nuser: <@${
-                                user.id
-                            }> (${
-                                user.id
-                            })\ndate: ${new Date()}\nmessage content: \`${
-                                msg.content
-                            }\`\nerror: \n\`\`\`\n${err.stack}\n\`\`\``,
-                        );
-                    },
-                );
-            } else {
+        if (
+            (cmd.permission === "Support" && user.support === true) ||
+            (cmd.permission === "Developer" && user.dev === true) ||
+            cmd.permission === "Public"
+        ) {
+            // execute command
+            cmd.execute(util, execCommand, args, msg).catch((err: Error) => {
+                // uh oh! there was an error! tell the user & tell turret
+                const id =
+                    Math.random().toString(36).substring(2, 15) +
+                    Math.random().toString(36).substring(2, 15);
                 util.client.createMessage(msg.channel.id, {
                     embed: {
-                        title: "Invalid Permissions",
+                        title: "Uh oh!",
                         description:
-                            "You do not have valid permissions to use this command.",
+                            "There was an issue handeling your request. Please contact turret.",
+                        footer: {
+                            text: `Error ID: ${id}`,
+                        },
+                        timestamp: new Date(),
                         color: config.colors.error,
                     },
                 });
-            }
-        } catch (err) {
-            // uh oh! there was an error! tell the user & tell turret
-            const id =
-                Math.random().toString(36).substring(2, 15) +
-                Math.random().toString(36).substring(2, 15);
+                util.errors.set(
+                    id,
+                    `***turret. bot error***\n> id: ${id}\nuser: <@${
+                        user.id
+                    }> (${user.id})\ndate: ${new Date()}\nmessage content: \`${
+                        msg.content
+                    }\`\nerror: \n\`\`\`\n${err.stack}\n\`\`\``,
+                );
+            });
+        } else {
             util.client.createMessage(msg.channel.id, {
                 embed: {
-                    title: "Uh oh!",
+                    title: "Invalid Permissions",
                     description:
-                        "There was an issue handeling your request. Please contact turret.",
-                    footer: {
-                        text: `Error ID: ${id}`,
-                    },
-                    timestamp: new Date(),
+                        "You do not have valid permissions to use this command.",
                     color: config.colors.error,
                 },
             });
-            util.errors.set(
-                id,
-                `***turret. bot error***\n> id: ${id}\nuser: <@${user.id}> (${
-                    user.id
-                })\ndate: ${new Date()}\nmessage content: \`${
-                    msg.content
-                }\`\nerror: \n\`\`\`\n${err.stack}\n\`\`\``,
-            );
         }
     }
 };
