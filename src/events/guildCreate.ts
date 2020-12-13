@@ -11,10 +11,7 @@ export default async (util: util, guild: Eris.Guild) => {
     ) {
         guild.leave();
     }
-    util.client.createMessage(
-        "762136407716003880",
-        "`[" +
-            new Date().toUTCString() +
-            `]\` ✅ Joined guild \`${guild.name}\` (${guild.id}) with owner ${guild.ownerID}`,
+    util.log(
+        `✅ Joined guild \`${guild.name}\` (${guild.id}) with owner ${guild.ownerID}`,
     );
 };

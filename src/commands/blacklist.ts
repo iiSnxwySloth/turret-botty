@@ -61,13 +61,15 @@ export const execute = async (
         });
     }
 
-    if(target.dev) return util.client.createMessage(msg.channel.id, {
-        embed: {
-            color: config.colors.error,
-            title: "turret. bot Blacklist",
-            description: "You can't do that! Why would I even let you do that?",
-        },
-    });
+    if (target.dev)
+        return util.client.createMessage(msg.channel.id, {
+            embed: {
+                color: config.colors.error,
+                title: "turret. bot Blacklist",
+                description:
+                    "You can't do that! Why would I even let you do that?",
+            },
+        });
 
     args.shift();
     const reason = args.join(" ");
@@ -86,11 +88,8 @@ export const execute = async (
             },
         });
 
-        util.client.createMessage(
-            "762136407716003880",
-            "`[" +
-                new Date().toUTCString() +
-                `]\` 🔧 User ${target.id} has been removed from the blacklist by ${msg.author.id}`,
+        util.log(
+            `🔧 User ${target.id} has been removed from the blacklist by ${msg.author.id}`,
         );
 
         util.client.createMessage((await target.getDMChannel()).id, {
@@ -115,11 +114,8 @@ export const execute = async (
             },
         });
 
-        util.client.createMessage(
-            "762136407716003880",
-            "`[" +
-                new Date().toUTCString() +
-                `]\` 🔨 User ${target.id} has been added to the blacklist by ${msg.author.id} \`${id}\``,
+        util.log(
+            `🔨 User ${target.id} has been added to the blacklist by ${msg.author.id} \`${id}\``,
         );
 
         util.client.createMessage((await target.getDMChannel()).id, {
