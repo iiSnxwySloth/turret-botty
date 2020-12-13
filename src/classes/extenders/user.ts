@@ -1,6 +1,6 @@
 import Eris from "eris";
-import * as config from "../config/config";
-import util from "../types/util";
+import * as config from "../../config/config";
+import util from "../../types/util";
 
 export default class TBotUser extends Eris.User {
     private util: util;

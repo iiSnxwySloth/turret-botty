@@ -1,5 +1,5 @@
 import Eris from "eris";
-import TBotUser from "../classes/user";
+import TBotUser from "../classes/extenders/user";
 import util from "../types/util";
 
 export default async (util: util, guild: Eris.Guild) => {

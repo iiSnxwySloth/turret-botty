@@ -1,7 +1,7 @@
 import clear from "clear-module";
 import Eris, { User } from "eris";
 import { config } from "process";
-import TBotUser from "./classes/user";
+import TBotUser from "./classes/extenders/user";
 import { colors, currency } from "./config/config";
 import util from "./types/util";
 

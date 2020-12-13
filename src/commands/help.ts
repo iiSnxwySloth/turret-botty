@@ -4,7 +4,7 @@ import * as commandTypes from "../types/commands";
 import util from "../types/util";
 import * as fs from "fs";
 import { reload } from "../resources";
-import TBotUser from "../classes/user";
+import TBotUser from "../classes/extenders/user";
 
 export const name = "help"; // name of command (idk why this is here?)
 

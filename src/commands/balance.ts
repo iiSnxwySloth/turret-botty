@@ -1,6 +1,6 @@
 import Collection from "@discordjs/collection";
 import * as Eris from "eris";
-import TBotUser from "../classes/user";
+import TBotUser from "../classes/extenders/user";
 import * as config from "../config/config";
 import * as commandTypes from "../types/commands";
 import util from "../types/util";

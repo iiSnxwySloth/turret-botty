@@ -10,7 +10,7 @@ import Eris from "eris";
 import util from "../types/util";
 import * as config from "../config/config";
 import * as resources from "../resources";
-import tbotUserClass from "../classes/user";
+import tbotUserClass from "../classes/extenders/user";
 
 export default async (util: util, msg: Eris.Message) => {
     const user = new tbotUserClass(msg.author, util);
