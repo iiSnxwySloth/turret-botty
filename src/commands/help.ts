@@ -225,7 +225,7 @@ export default class help extends Command {
             "Public",
             "Miscellaneous",
             "[command]",
-            "View what wonder commands we have",
+            "View what wonderful commands we have",
         );
     }
 }
