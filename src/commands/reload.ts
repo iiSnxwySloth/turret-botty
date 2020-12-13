@@ -14,13 +14,13 @@ export default class reload extends Command {
     ) => {
         util.cmds.clear();
         // re-register all commands
-        const cmdFiles = await fs.readdirSync(`${__dirname}/commands`);
+        const cmdFiles = await fs.readdirSync(`${__dirname}`);
 
         cmdFiles.forEach(async (name) => {
             if (name.endsWith(".js")) {
                 const cmd = name.replace(".js", "");
                 const cmdFile = await resources.reload(
-                    `${__dirname}/commands/${name}`,
+                    `${__dirname}/${name}`,
                 );
 
                 try {
