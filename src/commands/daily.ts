@@ -38,9 +38,9 @@ export default class daily extends Command {
                             description: `${
                                 user.mention
                             }, you must wait an additional \`${
-                                24 - new Date().getUTCHours()
-                            }h ${60 - new Date().getUTCMinutes()}m ${
-                                60 - new Date().getUTCSeconds()
+                                24 - new Date().getHours()
+                            }h ${60 - new Date().getMinutes()}m ${
+                                60 - new Date().getSeconds()
                             }s\` before redeeming your next daily ${
                                 config.currency
                             }.`,
