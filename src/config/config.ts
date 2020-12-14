@@ -49,6 +49,11 @@ export const colors = {
     reciept: 0xe0e0e0,
 };
 
+// info for ;info
+export const supportGuild = "https://discord.gg/SKC6fY2";
+export const github = "https://github.com/turret-studios/turret-botty";
+export const website = "https://www.turret-studios.tk/tbot/";
+
 // user statuses for the bot to rotate through (suggestions are welcomed)
 export const presences: erisPresence[] = [
     {
