@@ -1,6 +1,5 @@
 import clear from "clear-module";
 import Eris, { User } from "eris";
-import { config } from "process";
 import TBotUser from "./classes/extenders/user";
 import { colors, currency } from "./config/config";
 import util from "./types/util";
@@ -194,6 +193,7 @@ export const createTransaction = async (
                 (await recipientTBOT.balance) + amount,
             );
 
+            await util.client.createMessage("762136407716003880",`💸 ${senderTBOT.username} (${senderTBOT.id}) sent ${amount}${currency} to ${recipientTBOT.username} (${recipientTBOT.id})`)
             await confirmationMessage.edit({
                 embed: {
                     title: "TURRET. BOT TRANSACTION CONFIRMATION",
