@@ -19,9 +19,7 @@ export default class reload extends Command {
         cmdFiles.forEach(async (name) => {
             if (name.endsWith(".js")) {
                 const cmd = name.replace(".js", "");
-                const cmdFile = await resources.reload(
-                    `${__dirname}/${name}`,
-                );
+                const cmdFile = await resources.reload(`${__dirname}/${name}`);
 
                 try {
                     if (cmdFile !== null)
