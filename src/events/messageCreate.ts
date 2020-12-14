@@ -28,15 +28,9 @@ export default async (util: util, msg: Eris.Message) => {
         // gets args to be passed onto command
         const args = msg.content.split(" ").splice(1);
 
-        // gets information on the command
-        const cmdReq = await resources.reload(
-            `${__dirname}/../commands/${command}.js`,
-        );
-
         // ensures the command is valid
-        if (cmdReq === null) return;
-        if (cmdReq.default === null) return;
-        const cmd = new cmdReq.default();
+        const cmd = util.cmds.get(command as string);
+        if(typeof cmd === "undefined") return;
 
         const blacklisted = await user.blacklisted;
         if (blacklisted === true) return;
