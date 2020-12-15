@@ -29,7 +29,7 @@ export default class eightBall extends Command {
         args: string[],
         msg: Eris.Message<Eris.TextableChannel>,
     ) => {
-        if (args[0] === undefined)
+        if (typeof args[0] === "undefined")
             return util.client.createMessage(msg.channel.id, {
                 embed: {
                     color: config.colors.error,
