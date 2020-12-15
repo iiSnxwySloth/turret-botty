@@ -222,7 +222,5 @@ export const createTransaction = async (
                 },
             });
         }
-
-        clearTimeout(timeout);
     }, 60000);
 };
