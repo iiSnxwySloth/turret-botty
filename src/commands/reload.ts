@@ -37,7 +37,7 @@ export default class reload extends Command {
             embed: {
                 color: config.colors.success,
                 title: "Reloaded!",
-                description: `The bot has re-registered it's commands!`,
+                description: "The bot has re-registered it's commands!",
             },
         });
     };
