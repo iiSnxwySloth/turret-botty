@@ -36,7 +36,7 @@ export default class evalC extends Command {
             hrstart = process.hrtime();
             result = await eval(asyncEval(code, code.includes("return")));
         } catch (err) {
-            _err = err
+            let _err = err
                 ? err
                 : "an error occured, however no error was actually provided";
             if (_err.stack ? _err.stack.length : _err.length <= 1980) {
