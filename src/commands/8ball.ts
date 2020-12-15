@@ -4,7 +4,7 @@ import * as config from "../config/config";
 import util from "../types/util";
 const seedrandom = require("seedrandom");
 
-export default class eight_ball extends Command {
+export default class eightBall extends Command {
     private choices = [
         "As I see it, yes.",
         "Don’t count on it.",
