@@ -36,15 +36,15 @@ export default class evalC extends Command {
             hrstart = process.hrtime();
             result = await eval(asyncEval(code, code.includes("return")));
         } catch (err) {
-            err = err
+            _err = err
                 ? err
                 : "an error occured, however no error was actually provided";
-            if (err.stack ? err.stack.length : err.length <= 1980) {
+            if (_err.stack ? _err.stack.length : _err.length <= 1980) {
                 return await util.client.createMessage(msg.channel.id, {
                     embed: {
                         color: config.colors.error,
                         description: `\`\`\`\n${
-                            err.stack ? err.stack : err
+                            _err.stack ? _err.stack : _err
                         }\n\`\`\``,
                         footer: {
                             text: `Execution time: ${
