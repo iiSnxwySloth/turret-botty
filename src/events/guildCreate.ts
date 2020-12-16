@@ -4,10 +4,10 @@ import util from "../types/util";
 
 export default async (util: util, guild: Eris.Guild) => {
     if (
-        await (new TBotUser(
+        await new TBotUser(
             new Eris.User(await util.IPC.fetchUser(guild.ownerID), util.client),
             util,
-        ).blacklisted)
+        ).blacklisted
     ) {
         guild.leave();
     }

@@ -17,4 +17,4 @@ export default interface util {
     mysql: mysql.Connection;
     log: (msg: string) => void;
     cmds: Map<string, Command>;
-};
+}

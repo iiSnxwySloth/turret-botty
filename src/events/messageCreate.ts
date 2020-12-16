@@ -30,7 +30,7 @@ export default async (util: util, msg: Eris.Message) => {
 
         // ensures the command is valid
         const cmd = util.cmds.get(command as string);
-        if(typeof cmd === "undefined") return;
+        if (typeof cmd === "undefined") return;
 
         const blacklisted = await user.blacklisted;
         if (blacklisted === true) return;

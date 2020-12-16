@@ -8,7 +8,7 @@ export default class restart extends Command {
     constructor() {
         super("restart", "Developer", "Developer", "", "Restart the bot");
     }
-    
+
     public execute = async (
         util: util,
         command: string,

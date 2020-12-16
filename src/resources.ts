@@ -193,7 +193,10 @@ export const createTransaction = async (
                 (await recipientTBOT.balance) + amount,
             );
 
-            await util.client.createMessage("762136407716003880",`💸 ${senderTBOT.username} (${senderTBOT.id}) sent ${amount}${currency} to ${recipientTBOT.username} (${recipientTBOT.id})`);
+            await util.client.createMessage(
+                "762136407716003880",
+                `💸 ${senderTBOT.username} (${senderTBOT.id}) sent ${amount}${currency} to ${recipientTBOT.username} (${recipientTBOT.id})`,
+            );
             await confirmationMessage.edit({
                 embed: {
                     title: "TURRET. BOT TRANSACTION CONFIRMATION",
