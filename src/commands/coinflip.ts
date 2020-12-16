@@ -88,6 +88,13 @@ export default class coinflip extends Command {
 			})
 		} else {
 			user.setbalance((await user.balance) - bet)
+			return util.client.createMessage(msg.channel.id, {
+				embed: {
+					title: `You lost ${bet}${config.currency}.`,
+					description: `Check your new balance with ${config.prefix}balance`,
+					color: config.colors.error
+				}
+			})
 		}
 	};
 }
