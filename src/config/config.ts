@@ -9,7 +9,7 @@ type erisPresence = {
 export const devOnlyMode = false;
 
 // the prefix for the bot (please dont add any spaces or it will break most commands)
-export const prefix = ";";
+export const prefix = "t;";
 
 // version (major.minor.patch)
 export const version = "1.0.0";
