@@ -5,6 +5,16 @@ import * as config from "../config/config";
 import util from "../types/util";
 
 export default class daily extends Command {
+    constructor() {
+        super(
+            "ping",
+            "Public",
+            "Economy",
+            "",
+            `Get your daily ${config.currency}`,
+        );
+    }
+
     public execute = async (
         util: util,
         command: string,
@@ -51,14 +61,4 @@ export default class daily extends Command {
             },
         );
     };
-
-    constructor() {
-        super(
-            "ping",
-            "Public",
-            "Economy",
-            "",
-            `Get your daily ${config.currency}`,
-        );
-    }
 }

@@ -3,6 +3,16 @@ import Command from "../classes/abstract/command";
 import util from "../types/util";
 
 export default class error extends Command {
+    constructor() {
+        super(
+            "error",
+            "Support",
+            "Support",
+            "(error)",
+            "View the information on a turret. bot error",
+        );
+    }
+
     public execute = async (
         util: util,
         command: string,
@@ -15,14 +25,4 @@ export default class error extends Command {
             error ? error : "Invalid error ID",
         );
     };
-
-    constructor() {
-        super(
-            "error",
-            "Support",
-            "Support",
-            "(error)",
-            "View the information on a turret. bot error",
-        );
-    }
 }

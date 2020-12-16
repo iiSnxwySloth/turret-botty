@@ -5,6 +5,16 @@ import util from "../types/util";
 const seedrandom = require("seedrandom");
 
 export default class ppsize extends Command {
+    constructor() {
+        super(
+            "ppsize",
+            "Public",
+            "Fun",
+            "[@user/id]",
+            "Find out the length of someone's pp",
+        );
+    }
+
     private choices = [
         "`smol`",
         "`somewhat-big`",
@@ -34,14 +44,4 @@ export default class ppsize extends Command {
             },
         });
     };
-
-    constructor() {
-        super(
-            "ppsize",
-            "Public",
-            "Fun",
-            "[@user/id]",
-            "Find out the length of someone's pp",
-        );
-    }
 }

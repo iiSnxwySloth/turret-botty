@@ -5,6 +5,16 @@ import * as config from "../config/config";
 import util from "../types/util";
 
 export default class blacklist extends Command {
+    constructor() {
+        super(
+            "blacklist",
+            "Support",
+            "Support",
+            "(user) [reason]",
+            "Prevents a user from further using turret. bot",
+        );
+    }
+
     public execute = async (
         util: util,
         command: string,
@@ -120,14 +130,4 @@ export default class blacklist extends Command {
             });
         }
     };
-
-    constructor() {
-        super(
-            "blacklist",
-            "Support",
-            "Support",
-            "(user) [reason]",
-            "Prevents a user from further using turret. bot",
-        );
-    }
 }

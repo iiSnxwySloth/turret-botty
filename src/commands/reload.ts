@@ -6,6 +6,16 @@ import * as resources from "../resources";
 import * as config from "../config/config";
 
 export default class reload extends Command {
+    constructor() {
+        super(
+            "reload",
+            "Developer",
+            "Developer",
+            "",
+            "re-registers all bot commands",
+        );
+    }
+
     public execute = async (
         util: util,
         command: string,
@@ -41,14 +51,4 @@ export default class reload extends Command {
             },
         });
     };
-
-    constructor() {
-        super(
-            "reload",
-            "Developer",
-            "Developer",
-            "",
-            "re-registers all bot commands",
-        );
-    }
 }

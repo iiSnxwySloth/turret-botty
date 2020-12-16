@@ -5,6 +5,16 @@ import * as config from "../config/config";
 import util from "../types/util";
 
 export default class balance extends Command {
+    constructor() {
+        super(
+            "balance",
+            "Public",
+            "Economy",
+            "[@user/id]",
+            "View how much TBX someone has",
+        );
+    }
+
     public execute = async (
         util: util,
         command: string,
@@ -37,14 +47,4 @@ export default class balance extends Command {
             },
         });
     };
-
-    constructor() {
-        super(
-            "balance",
-            "Public",
-            "Economy",
-            "[@user/id]",
-            "View how much TBX someone has",
-        );
-    }
 }

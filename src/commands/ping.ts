@@ -4,6 +4,16 @@ import * as config from "../config/config";
 import util from "../types/util";
 
 export default class ping extends Command {
+    constructor() {
+        super(
+            "ping",
+            "Public",
+            "Miscellaneous",
+            "",
+            "Find out the latency of the bot",
+        );
+    }
+
     public execute = async (
         util: util,
         command: string,
@@ -26,14 +36,4 @@ export default class ping extends Command {
             },
         });
     };
-
-    constructor() {
-        super(
-            "ping",
-            "Public",
-            "Miscellaneous",
-            "",
-            "Find out the latency of the bot",
-        );
-    }
 }

@@ -5,6 +5,10 @@ import { exec } from "child_process";
 import Command from "../classes/abstract/command";
 
 export default class restart extends Command {
+    constructor() {
+        super("restart", "Developer", "Developer", "", "Restart the bot");
+    }
+    
     public execute = async (
         util: util,
         command: string,
@@ -21,8 +25,4 @@ export default class restart extends Command {
         });
         await exec("pm2 restart 0");
     };
-
-    constructor() {
-        super("restart", "Developer", "Developer", "", "Restart the bot");
-    }
 }

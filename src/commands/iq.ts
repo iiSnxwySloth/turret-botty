@@ -5,6 +5,16 @@ import util from "../types/util";
 const seedrandom = require("seedrandom");
 
 export default class iq extends Command {
+    constructor() {
+        super(
+            "iq",
+            "Public",
+            "Fun",
+            "[@user/id]",
+            "Find out how big brain someone is",
+        );
+    }
+
     public execute = async (
         util: util,
         command: string,
@@ -23,14 +33,4 @@ export default class iq extends Command {
             },
         });
     };
-
-    constructor() {
-        super(
-            "iq",
-            "Public",
-            "Fun",
-            "[@user/id]",
-            "Find out how big brain someone is",
-        );
-    }
 }

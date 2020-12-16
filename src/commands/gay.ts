@@ -5,6 +5,16 @@ import util from "../types/util";
 const seedrandom = require("seedrandom");
 
 export default class gay extends Command {
+    constructor() {
+        super(
+            "gay",
+            "Public",
+            "Fun",
+            "[@user/id]",
+            "find out how gay someone is",
+        );
+    }
+
     public execute = async (
         util: util,
         command: string,
@@ -25,14 +35,4 @@ export default class gay extends Command {
             },
         });
     };
-
-    constructor() {
-        super(
-            "gay",
-            "Public",
-            "Fun",
-            "[@user/id]",
-            "find out how gay someone is",
-        );
-    }
 }

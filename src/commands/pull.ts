@@ -5,6 +5,10 @@ import { exec } from "child_process";
 import Command from "../classes/abstract/command";
 
 export default class pull extends Command {
+    constructor() {
+        super("pull", "Developer", "Developer", "", "Reload the bot");
+    }
+
     public execute = async (
         util: util,
         command: string,
@@ -21,8 +25,4 @@ export default class pull extends Command {
             },
         });
     };
-
-    constructor() {
-        super("pull", "Developer", "Developer", "", "Reload the bot");
-    }
 }

@@ -6,6 +6,16 @@ import { createTransaction } from "../resources";
 import util from "../types/util";
 
 export default class transfer extends Command {
+    constructor() {
+        super(
+            "transfer",
+            "Public",
+            "Economy",
+            "(@user/id) (amount) [message]",
+            "Send a friend your money!",
+        );
+    }
+
     public execute = async (
         util: util,
         command: string,
@@ -93,14 +103,4 @@ export default class transfer extends Command {
 
         return;
     };
-
-    constructor() {
-        super(
-            "transfer",
-            "Public",
-            "Economy",
-            "(@user/id) (amount) [message]",
-            "Send a friend your money!",
-        );
-    }
 }

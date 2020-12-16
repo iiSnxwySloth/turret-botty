@@ -6,6 +6,16 @@ import { post } from "chainfetch";
 import Command from "../classes/abstract/command";
 
 export default class evalC extends Command {
+    constructor() {
+        super(
+            "eval",
+            "Developer",
+            "Developer",
+            "(code)",
+            "Execute javascript code",
+        );
+    }
+
     public execute = async (
         util: util,
         command: string,
@@ -102,14 +112,4 @@ export default class evalC extends Command {
             );
         }
     };
-
-    constructor() {
-        super(
-            "eval",
-            "Developer",
-            "Developer",
-            "(code)",
-            "Execute javascript code",
-        );
-    }
 }

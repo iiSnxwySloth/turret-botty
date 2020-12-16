@@ -5,6 +5,16 @@ import util from "../types/util";
 const seedrandom = require("seedrandom");
 
 export default class eightBall extends Command {
+    constructor() {
+        super(
+            "8ball",
+            "Public",
+            "Fun",
+            "(question)",
+            "Ask the magic 8ball a question",
+        );
+    }
+
     private choices = [
         "As I see it, yes.",
         "Don’t count on it.",
@@ -58,14 +68,4 @@ export default class eightBall extends Command {
             },
         });
     };
-
-    constructor() {
-        super(
-            "8ball",
-            "Public",
-            "Fun",
-            "(question)",
-            "Ask the magic 8ball a question",
-        );
-    }
 }

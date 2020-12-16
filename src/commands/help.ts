@@ -7,6 +7,16 @@ import TBotUser from "../classes/extenders/user";
 import Command from "../classes/abstract/command";
 
 export default class help extends Command {
+    constructor() {
+        super(
+            "help",
+            "Public",
+            "Miscellaneous",
+            "[command]",
+            "View what wonderful commands we have",
+        );
+    }
+
     public execute = async (
         util: util,
         command: string,
@@ -218,14 +228,4 @@ export default class help extends Command {
             });
         }
     };
-
-    constructor() {
-        super(
-            "help",
-            "Public",
-            "Miscellaneous",
-            "[command]",
-            "View what wonderful commands we have",
-        );
-    }
 }
