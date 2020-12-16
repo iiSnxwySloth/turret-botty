@@ -33,7 +33,7 @@ export default class coinflip extends Command {
 			})
 
 		const choiceString = args[0].toLowerCase();
-		const choice = choiceString === "heads" ? 0 : choiceString === "tails" ? 1 : null
+		const choice = choiceString === "heads" ? 1 : choiceString === "tails" ? 0 : null
 
 		const bet = Math.floor(parseInt(args[1]))
 
@@ -75,7 +75,7 @@ export default class coinflip extends Command {
 				}
 			})
 		
-		const compChoice = Math.floor(Math.random() * 1);
+		const compChoice = Math.floor(Math.random() * 2);
 
 		if(choice === compChoice) {
 			user.setbalance((await user.balance) + Math.round(bet*0.75))
