@@ -95,7 +95,7 @@ declare module "eris-sharder" {
 
     export abstract class Base {
         protected bot: Eris.Client;
-        protected cluserID: number;
+        protected clusterID: number;
         protected ipc: {
             register(event: string, callback: Function): void;
             unregister(event: string): void;
