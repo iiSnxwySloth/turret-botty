@@ -26,7 +26,7 @@ export default class transfer extends Command {
             return util.client.createMessage(msg.channel.id, {
                 embed: {
                     title: "Money Transfer",
-                    description: `A recipient was not specified. Please specify a recipient\n\`${config.prefix}${name} [recipient] [amount] (message)\``,
+                    description: `A recipient was not specified. Please specify a recipient\n\`${config.prefix}${this.name} [recipient] [amount] (message)\``,
                     color: config.colors.error,
                 },
             });
@@ -34,7 +34,7 @@ export default class transfer extends Command {
             return util.client.createMessage(msg.channel.id, {
                 embed: {
                     title: "Money Transfer",
-                    description: `An amount was not specified. Please specify an amount\n\`${config.prefix}${name} ${args[0]} [amount] (message)\``,
+                    description: `An amount was not specified. Please specify an amount\n\`${config.prefix}${this.name} ${args[0]} [amount] (message)\``,
                     color: config.colors.error,
                 },
             });
